@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.block.androidui.widget.ButtonActivity
+import com.block.androidui.widget.ChronometerActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -45,12 +46,18 @@ class WidgetListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         rvWidget = view.findViewById(R.id.rv_widget)
         rvWidget.layoutManager = GridLayoutManager(requireContext(), 3)
-        val data = listOf("TextView", "Button", "EditText", "ImageView")
+        val data = mutableListOf<ViewIntro>()
+        data.add(ViewIntro("TextView", "文本"))
+        data.add(ViewIntro("Button", "按钮", R.drawable.ic_btn_icon))
+        data.add(ViewIntro("EditText", "输入框"))
+        data.add(ViewIntro("ImageView", "图片"))
+        data.add(ViewIntro("Chronometer", "计时器", R.drawable.ic_chronometer_icon))
         val adapter = WidgetListAdapter(data)
         adapter.setOnItemClick(object : OnItemClick {
             override fun onItemClick(position: Int) {
                 when (position) {
                     1 -> requireActivity().startActivity(Intent(requireActivity(), ButtonActivity::class.java))
+                    4 -> requireActivity().startActivity(Intent(requireActivity(), ChronometerActivity::class.java))
                 }
             }
         })

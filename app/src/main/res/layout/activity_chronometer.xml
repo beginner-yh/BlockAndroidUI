@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".widget.ChronometerActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@color/teal_700"
+        android:gravity="center_vertical"
+        android:text="不建议使用，可以使用 TextView + Handler 代替 \n 1.倒计时功能只兼容到24以上版本 \n 2.难定制化样式，展示的内容是根据 base 生成的，不好设置时间样式，比如 展示初始化 60s \n 3.暂停时间以后，时间计算并没有实际停止，无法恢复"
+        android:textColor="@color/white"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:text="计时器"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="格式化时间 "
+            app:layout_constraintBottom_toBottomOf="@+id/ct_timer_format"
+            app:layout_constraintEnd_toStartOf="@+id/ct_timer_format" />
+
+        <Chronometer
+            android:id="@+id/ct_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Chronometer
+            android:id="@+id/ct_timer_format"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ct_timer" />
+
+        <Button
+            android:id="@+id/btn_start_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="开始"
+            app:layout_constraintEnd_toStartOf="@+id/btn_stop_timer"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ct_timer_format" />
+
+        <Button
+            android:id="@+id/btn_stop_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="暂停"
+            app:layout_constraintEnd_toStartOf="@+id/btn_start_timer"
+            app:layout_constraintStart_toEndOf="@+id/btn_continue_timer"
+            app:layout_constraintTop_toBottomOf="@+id/ct_timer_format" />
+
+        <Button
+            android:id="@+id/btn_continue_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:enabled="false"
+            android:text="续播"
+            app:layout_constraintEnd_toStartOf="@+id/btn_finish_timer"
+            app:layout_constraintStart_toEndOf="@+id/btn_stop_timer"
+            app:layout_constraintTop_toBottomOf="@+id/ct_timer_format" />
+
+        <Button
+            android:id="@+id/btn_finish_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="结束"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_continue_timer"
+            app:layout_constraintTop_toBottomOf="@+id/ct_timer_format" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_marginStart="16dp"
+        android:gravity="center_vertical"
+        android:text="倒计时"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Chronometer
+            android:id="@+id/ct_count_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btn_start_count_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="开始"
+            app:layout_constraintEnd_toStartOf="@+id/btn_stop_count_down"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ct_count_down" />
+
+        <Button
+            android:id="@+id/btn_stop_count_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="暂停"
+            app:layout_constraintEnd_toStartOf="@+id/btn_continue_count_down"
+            app:layout_constraintStart_toEndOf="@+id/btn_start_count_down"
+            app:layout_constraintTop_toBottomOf="@+id/ct_count_down" />
+
+        <Button
+            android:id="@+id/btn_continue_count_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:enabled="false"
+            android:text="续播"
+            app:layout_constraintEnd_toStartOf="@+id/btn_finish_count_down"
+            app:layout_constraintStart_toEndOf="@+id/btn_stop_count_down"
+            app:layout_constraintTop_toBottomOf="@+id/ct_count_down" />
+
+        <Button
+            android:id="@+id/btn_finish_count_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="结束"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_continue_count_down"
+            app:layout_constraintTop_toBottomOf="@+id/ct_count_down" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.appcompat.widget.LinearLayoutCompat>

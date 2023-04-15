@@ -3,10 +3,11 @@ package com.block.androidui
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class WidgetListAdapter(private val data: List<String>) : RecyclerView.Adapter<WidgetListViewHolder>() {
+class WidgetListAdapter(private val data: List<ViewIntro>) : RecyclerView.Adapter<WidgetListViewHolder>() {
 
     private var onItemClick: OnItemClick? = null
 
@@ -24,7 +25,10 @@ class WidgetListAdapter(private val data: List<String>) : RecyclerView.Adapter<W
     }
 
     override fun onBindViewHolder(holder: WidgetListViewHolder, position: Int) {
-        holder.tvTitle.text = data[position]
+        val itemData = data[position]
+        holder.tvTitle.text = itemData.title
+        holder.tvIntro.text = itemData.intro
+        holder.ivIcon.setImageResource(itemData.icon)
         holder.itemView.setOnClickListener {
             onItemClick?.onItemClick(position)
         }
@@ -38,4 +42,6 @@ interface OnItemClick {
 
 class WidgetListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
     val tvTitle: TextView = itemView.findViewById(R.id.tv_title)
+    val tvIntro: TextView = itemView.findViewById(R.id.tv_intro)
+    val ivIcon: ImageView = itemView.findViewById(R.id.iv_icon)
 }
