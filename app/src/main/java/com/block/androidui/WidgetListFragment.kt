@@ -52,6 +52,7 @@ class WidgetListFragment : Fragment() {
         data.add(ViewIntro("EditText", "输入框"))
         data.add(ViewIntro("ImageView", "图片"))
         data.add(ViewIntro("Chronometer", "计时器", R.drawable.ic_chronometer_icon))
+        data.add(ViewIntro("CheckBox","复选框"))
         val adapter = WidgetListAdapter(data)
         adapter.setOnItemClick(object : OnItemClick {
             override fun onItemClick(position: Int) {
