@@ -1,5 +1,6 @@
 package com.block.androidui
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.block.androidui.widget.ButtonActivity
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -44,7 +46,16 @@ class WidgetListFragment : Fragment() {
         rvWidget = view.findViewById(R.id.rv_widget)
         rvWidget.layoutManager = GridLayoutManager(requireContext(), 3)
         val data = listOf("TextView", "Button", "EditText", "ImageView")
-        rvWidget.adapter = WidgetListAdapter(data)
+        val adapter = WidgetListAdapter(data)
+        adapter.setOnItemClick(object : OnItemClick {
+            override fun onItemClick(position: Int) {
+                when (position) {
+                    1 -> requireActivity().startActivity(Intent(requireActivity(), ButtonActivity::class.java))
+                }
+            }
+        })
+        rvWidget.adapter = adapter
+
     }
 
     companion object {

@@ -13,7 +13,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var tlMain: TabLayout
     private lateinit var vpMain: ViewPager2
     private lateinit var mMediator: TabLayoutMediator
-    private val mTabTitle = listOf("Widget", "Compose")
+    private val mTabTitle = listOf("View", "ViewGroup")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
