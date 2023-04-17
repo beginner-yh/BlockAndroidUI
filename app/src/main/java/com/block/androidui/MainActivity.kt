@@ -26,7 +26,11 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun createFragment(position: Int): Fragment {
-                return WidgetListFragment.newInstance("", "")
+                return if (position == 0) {
+                    WidgetListFragment.newInstance(TYPE_VIEW, "")
+                } else {
+                    WidgetListFragment.newInstance(TYPE_VIEW_GROUP, "")
+                }
             }
 
         }
