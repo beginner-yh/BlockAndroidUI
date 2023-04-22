@@ -12,6 +12,9 @@
         android:theme="@style/Theme.BlockAndroidUI"
         tools:targetApi="31">
         <activity
+            android:name=".widget.FlowLayoutActivity"
+            android:exported="false" />
+        <activity
             android:name=".widget.SeekBarActivity"
             android:exported="false" />
         <activity

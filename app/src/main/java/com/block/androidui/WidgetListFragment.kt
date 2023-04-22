@@ -8,10 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.block.androidui.widget.ButtonActivity
-import com.block.androidui.widget.ChronometerActivity
-import com.block.androidui.widget.SeekBarActivity
-import com.block.androidui.widget.TextViewActivity
+import com.block.androidui.widget.*
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -73,11 +70,17 @@ class WidgetListFragment : Fragment() {
         val adapter = WidgetListAdapter(data)
         adapter.setOnItemClick(object : OnItemClick {
             override fun onItemClick(position: Int) {
-                when (position) {
-                    0 -> requireActivity().startActivity(Intent(requireActivity(), TextViewActivity::class.java))
-                    1 -> requireActivity().startActivity(Intent(requireActivity(), ButtonActivity::class.java))
-                    5 -> requireActivity().startActivity(Intent(requireActivity(), ChronometerActivity::class.java))
-                    8 -> requireActivity().startActivity(Intent(requireActivity(), SeekBarActivity::class.java))
+                if(mType == TYPE_VIEW) {
+                    when (position) {
+                        0 -> requireActivity().startActivity(Intent(requireActivity(), TextViewActivity::class.java))
+                        1 -> requireActivity().startActivity(Intent(requireActivity(), ButtonActivity::class.java))
+                        5 -> requireActivity().startActivity(Intent(requireActivity(), ChronometerActivity::class.java))
+                        8 -> requireActivity().startActivity(Intent(requireActivity(), SeekBarActivity::class.java))
+                    }
+                }else{
+                    when (position) {
+                        10 -> requireActivity().startActivity(Intent(requireActivity(), FlowLayoutActivity::class.java))
+                    }
                 }
             }
         })
